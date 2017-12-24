@@ -4,8 +4,85 @@
              xmlns:local="clr-namespace:ICT13580075EndB"
              x:Class="ICT13580075EndB.MainPage">
 
-	<Label Text="Welcome to Xamarin.Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="New"
+            x:Name="newButton"/>
+    </ContentPage.ToolbarItems>
+
+    <ListView
+        x:Name="carListview"
+        RowHeight="300">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <TextCell.ContextActions>
+                        <MenuItem
+                            Text="Edit"
+                            CommandParameter="{Binding .}"
+                            Clicked="Edit_Clicked"/>
+                        <MenuItem
+                            Text="Delete"
+                            CommandParameter="{Binding .}"
+                            IsDestructive="True"
+                            Clicked="Delete_Clicked"/>
+                    </TextCell.ContextActions>
+
+
+                    <StackLayout
+                        Orientation="Vertical">
+                        <Label
+                            Text="{Binding Type, StringFormat=' ประเภท : {0}'}"
+                            FontAttributes="Bold"
+                            TextColor="Navy"
+                            />
+                        <Label
+                            Text="{Binding Brand, StringFormat=' ยี่ห้อ : {0}'}"
+                            FontAttributes="Bold"
+                            TextColor="Navy"
+                            />
+                        <Label
+                            Text="{Binding Gen, StringFormat=' รุ่น : {0}'}"
+                            FontAttributes="Bold"
+                            TextColor="Navy"/>
+                        <Label
+                            Text="{Binding Year, StringFormat=' ปี : {0}'}"
+                            FontAttributes="Bold"
+                            TextColor="Navy"/>
+                        <Label
+                            Text="{Binding Mile, StringFormat=' เลขไมล์ : {0}'}"
+                            FontAttributes="Bold"
+                            TextColor="Navy"/>
+                        <Label
+                            Text="{Binding Color, StringFormat=' สี : {0}'}"
+                            FontAttributes="Bold"
+                            TextColor="Navy"/>
+                        <Label
+                            Text="{Binding Dealer, StringFormat=' เป็นของดีเลอร์ : {0}'}"
+                            FontAttributes="Bold"
+                            TextColor="Navy"/>
+                        <Label
+                            Text="{Binding Detail, StringFormat=' รายละเอียด : {0}'}"
+                            FontAttributes="Bold"
+                            TextColor="Navy"
+                            LineBreakMode="TailTruncation"/>
+                        <Label
+                            Text="{Binding Price, StringFormat=' ราคา : {0}'}"
+                            FontAttributes="Bold"
+                            TextColor="Navy"/>
+                        <Label
+                            Text="{Binding City, StringFormat=' จังหวัด : {0}'}"
+                            FontAttributes="Bold"
+                            TextColor="Navy"/>
+                        <Label
+                            Text="{Binding Phone, StringFormat=' เบอร์โทรศัพท์ : {0}'}"
+                            FontAttributes="Bold"
+                            TextColor="Navy"/>
+                    </StackLayout>
+
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 
 </ContentPage>
